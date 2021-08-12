@@ -1,0 +1,215 @@
+<app-header></app-header>
+
+<section class="kishu-section ptPad mt-5">
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-7">
+                <h1>Czatoshi Bridge</h1>
+                <p class="mt-3">Czatoshi Bridge is a bridge service providing access to inter-blockchain liquidity for Binance Smart Chain and Ethereum Chain decentralized applications, and allow user to exchange Czatoshi token from one chain to other. A fixed network fee will be charged according to different networks. The amount differs within different blockchains. </p>
+                <p class="mt-4">User can easily bridge by connecting to their metamask wallets and filling the amount the want to swap. Once process is complete funds will be deposited in users wallet. </p>
+            </div>
+            
+            <div class="col-lg-5">
+                <div class="bg-image">
+                    <form action="" [formGroup]="userform">
+                        <div class="kishu-swap-section">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 col-md-6 col-6">
+                                    <div class="catoshi-content">
+                                        <!-- <ng-select [items]="allCryptoList" bindLabel="name" bindValue="name" [clearable]="false" -->
+                                        <!-- formControlName="FromCrypto"> -->
+                                        <!-- <ng-template ng-label-tmp let-item="item"> -->
+                                        <b class="ml-2"><img src="assets/images/d.png" class="mr-1 left-catossi">CZATOSHI</b>
+                                        <!-- </ng-template> -->
+                                        <!-- </ng-select> -->
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-6 d-flex justify-content-end">
+            
+                                    <!-- <button type="button " class="btn modal-button-second" data-toggle="modal" data-target="#myModal">
+                        <i class="fas fa-cog"></i>
+                      </button> -->
+            
+                                    <!-- The Modal -->
+                                    <div class="modal fade" id="myModal">
+                                        <div class="modal-dialog ">
+                                            <div class="modal-content">
+            
+                                                <!-- Modal Header -->
+            
+            
+                                                <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>
+                             -->
+            
+                                                <!-- Modal body -->
+                                                <div class="modal-body">
+                                                    <p>Transaction Settings
+                                                    </p>
+                                                    <p class="mt-2">Slippage tolerance<i class="far fa-question-circle"></i>
+                                                    </p>
+                                                    <button type="button" class="btn ">0.1%</button>
+                                                    <button type="button" class="btn ">0.5%</button>
+                                                    <button type="button" class="btn ">1%</button>
+                                                    <input type="text" value="1.00%" placeholder="1.00%" class="minute-group">
+            
+                                                    <p class="mt-2">Transaction deadline
+                                                        <i class="far fa-question-circle"></i>
+                                                    </p>
+                                                    <div class="d-flex align-items-center mt-3">
+                                                        <div class="">
+                                                            <input type="text" value="6" placeholder="6" class="minute-group">
+                                                        </div>
+                                                        <div class="minute-section ml-3">
+                                                            <p>Minute</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="interface-section mt-3">
+                                                        <p>Interface Settings
+                                                        </p>
+                                                    </div>
+                                                    <div class="mt-2 d-flex align-items-center justify-content-between">
+                                                        <div class="expert-toggle">
+                                                            <span>Toggle Expert Mode
+                                                            </span><i class="far fa-question-circle"></i>
+                                                        </div>
+                                                        <div class="">
+                                                            <label class="switch">
+                                                                <input type="checkbox">
+                                                                <span class="slider round"></span>
+                                                            </label>
+            
+                                                        </div>
+                                                    </div>
+                                                    <div class=" d-flex align-items-center justify-content-between">
+                                                        <div class="expert-toggle">
+                                                            <span>Disable Multihops
+            
+                                                            </span><i class="far fa-question-circle"></i>
+                                                        </div>
+                                                        <div class="">
+                                                            <label class="switch">
+                                                                <input type="checkbox">
+                                                                <span class="slider round"></span>
+                                                            </label>
+            
+                                                        </div>
+                                                    </div>
+                                                </div>
+            
+                                                <!-- Modal footer -->
+            
+            
+                                            </div>
+                                        </div>
+                                    </div>
+            
+                                </div>
+            
+            
+                            </div>
+                            <div class="form-kishu-group-section mt-2">
+                                <div style="display:flex; justify-content: space-between; margin-bottom: 2%;">
+                                    <span>    <p>From</p></span>
+                                    <span>
+                                        <button (click)="getMaxValue()" class="btn btn-outline btn mr-2" style="padding: 0px 20px !important;">
+                                            Max
+                                        </button>
+                                    </span>
+                                </div>
+                                <div class="row d-flex align-items-center">
+                                    <div class="col-lg-6">
+                                        <div class="form-group m-0">
+            
+                                            <input type="text" formControlName="from" (ngModelChange)="getFromValue($event)"
+                                                id="inputEmail4" placeholder="0"
+                                                class="form-control ng-pristine ng-invalid ng-touched" ng-reflect-name="from"
+                                                >
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <ng-select [items]="allCryptoList" bindLabel="name" bindValue="name" [clearable]="false"
+                                            formControlName="FromCrypto">
+                                            <ng-template ng-label-tmp let-item="item">
+                                                <img class="ml-2" height="15" width="15" [src]="item.logo" />
+                                                <b class="ml-2">{{item.name}}</b>
+                                            </ng-template>
+                                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                <div (click)="getFrom(item.name)">
+                                                    <img class="ml-2" height="15" width="15" [src]="item.logo" />
+                                                    <b class="ml-2">{{item.name}}</b>
+                                                </div>
+                                            </ng-template>
+                                        </ng-select>
+
+                                    </div>
+                                </div>
+            
+                            </div>
+                            <div class="exchange-section">
+            
+            
+                            </div>
+                            <div class="down-arrow text-center">
+                                <i class="fas fa-arrow-down"></i>
+                            </div>
+                            <div class="form-group m-0">
+                                <div class="form-kishu-group-section">
+                                    <p>To</p>
+                                    <div class="row d-flex align-items-center">
+                                        <div class="col-lg-6">
+                                            <div class="form-group m-0">
+            
+                                                <input type="text" formControlName="to" id="inputEmail4" placeholder="0"
+                                                    class="form-control ng-pristine ng-invalid ng-touched" ng-reflect-name="from"
+                                                    >
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <ng-select [items]="allCryptoList1" bindLabel="names" bindValue="names"
+                                                formControlName="ToCrypto" [clearable]="false">
+            
+                                                <ng-template ng-label-tmp let-item="item">
+                                                    <img class="ml-2" height="15" width="15" [src]="item.logo" />
+                                                    <b class="ml-2">{{item.names}}</b>
+                                                </ng-template>
+                                                <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                    <div (click)="getTo(item.names)">
+                                                        <img class="ml-2" height="15" width="15" [src]="item.logo" />
+                                                        <b class="ml-2">{{item.names}}</b>
+                                                    </div>
+                                                </ng-template>
+                                            </ng-select>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                                <div class="swap-button mt-4">
+                                    <span *ngIf="walletConnect">
+                                        <button class="btn btn-outline btn mr-2 w-100" (click)="connectMetamask()">Connect
+                                            Wallet</button>
+                                    </span>
+                                    <span *ngIf="bscSwap">
+                                        <button class="btn btn-outline btn mr-2 w-100" (click)="swapBSC()">Swap BSC</button>
+                                        <!-- BSC to ETH -->
+                                    </span>
+                                    <span *ngIf="ethSwap">
+                                        <button class="btn btn-outline btn mr-2 w-100" (click)="swapETH()">Swap ETH</button>
+                                        <!-- ETH to BSC -->
+                                    </span>
+                                    <span *ngIf="insuffBalError">
+                                        <button class="btn btn-outline btn mr-2 w-100" [disabled]="true">Insufficient
+                                            Balance</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+            
+                    </form>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</section>
+
+<ngx-loading [show]="loading" ></ngx-loading>
