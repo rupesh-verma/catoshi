@@ -197,14 +197,14 @@
                                         <button class="btn btn-outline btn mr-2 w-100" (click)="swapETH()">Swap  </button>
                                         <!-- ETH to BSC -->
                                     </span>
-                                    <span >
+                                    <span *ngIf="isTrustWalletConnected">
                                         <button class="btn btn-outline btn mr-2 w-100" (click)="swapETHOnWalletConnect()">Swap Wallet Connect</button>
                                         <!-- ETH to BSC -->
                                     </span>
-                                    <!-- <span *ngIf="insuffBalError">
+                                    <span *ngIf="insuffBalError">
                                         <button class="btn btn-outline btn mr-2 w-100" [disabled]="true">Insufficient
                                             Balance</button>
-                                    </span>  -->
+                                    </span> 
                                 </div>
                             </div>
                         </div>
